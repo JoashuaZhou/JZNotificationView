@@ -10,9 +10,10 @@
 
 #define margin                  8
 #define iconViewLeadingPadding  16
-#define iconViewWidth           30
+#define iconViewWidth           25
 #define iconViewHeight          iconViewWidth
 
+#define headlineLabelTopPadding      20
 #define headlineLabelTrailingPadding 8
 #define headlineLabelHeight          15
 #define messageLabelTrailingPadding  headlineLabelTrailingPadding
@@ -73,24 +74,37 @@
     
 //    CGFloat iconViewY = (self.bounds.size.height - iconViewHeight) / 2;
     self.iconView.frame = CGRectMake(iconViewLeadingPadding, iconViewLeadingPadding, iconViewWidth, iconViewHeight);
-    self.iconView.center = CGPointMake(iconViewLeadingPadding + iconViewWidth / 2, self.bounds.size.height / 2);
+    self.iconView.center = CGPointMake(iconViewLeadingPadding + iconViewWidth / 2, (self.bounds.size.height + iconViewLeadingPadding) / 2);
     
     CGFloat headlineLabelX = iconViewLeadingPadding + iconViewWidth + margin;
     CGFloat headlineLabelWidth = self.bounds.size.width - headlineLabelTrailingPadding - headlineLabelX;
-    self.headlineLabel.frame = CGRectMake(headlineLabelX, iconViewLeadingPadding - 4, headlineLabelWidth, headlineLabelHeight);
+    self.headlineLabel.frame = CGRectMake(headlineLabelX, headlineLabelTopPadding, headlineLabelWidth, headlineLabelHeight);
     
     CGFloat messageLabelY = CGRectGetMaxY(self.headlineLabel.frame) + margin;
     self.messageLabel.frame = CGRectMake(headlineLabelX, messageLabelY, headlineLabelWidth, self.bounds.size.height - messageLabelY - margin);
 }
 
-+ (void)showWithIcon:(UIImage *)image headline:(NSString *)headline message:(NSString *)message
+- (UIColor *)labelColorWithImageName:(NSString *)imageName
+{
+    if ([imageName isEqualToString:@"Success"]) {
+        return [UIColor colorWithRed:25/255.0 green:200/255.0 blue:62/255.0 alpha:1.0];
+    } else if ([imageName isEqualToString:@"Warning"]) {
+        return [UIColor colorWithRed:245/255.0 green:166/255.0 blue:60/255.0 alpha:1.0];
+    } else {
+        return [UIColor colorWithRed:234/255.0 green:33/255.0 blue:33/255.0 alpha:1.0];
+    }
+}
+
++ (void)showWithIconName:(NSString *)imageName headline:(NSString *)headline message:(NSString *)message
 {
     UIView *view = [[UIApplication sharedApplication].windows lastObject];
     
     JZNotificationView *notificationView = [[JZNotificationView alloc] initWithFrame:CGRectMake(0, -64, view.bounds.size.width, 64)];
-    notificationView.iconView.image = image;
+    notificationView.iconView.image = [UIImage imageNamed:imageName];
     notificationView.headlineLabel.text = headline;
+    notificationView.headlineLabel.textColor = [notificationView labelColorWithImageName:imageName];
     notificationView.messageLabel.text = message;
+    notificationView.messageLabel.textColor = [notificationView labelColorWithImageName:imageName];
     
     [view addSubview:notificationView];
     [UIView animateWithDuration:0.8 animations:^{
@@ -104,17 +118,17 @@
 
 + (void)showSuccessWithHeadline:(NSString *)headline message:(NSString *)message
 {
-    [JZNotificationView showWithIcon:[UIImage imageNamed:@"Success"] headline:headline message:message];
+    [JZNotificationView showWithIconName:@"Success" headline:headline message:message];
 }
 
 + (void)showFailureWithHeadline:(NSString *)headline message:(NSString *)message
 {
-    [JZNotificationView showWithIcon:[UIImage imageNamed:@"Failure"] headline:headline message:message];
+    [JZNotificationView showWithIconName:@"Failure" headline:headline message:message];
 }
 
 + (void)showWarningWithHeadline:(NSString *)headline message:(NSString *)message
 {
-    [JZNotificationView showWithIcon:[UIImage imageNamed:@"Warning"] headline:headline message:message];
+    [JZNotificationView showWithIconName:@"Warning" headline:headline message:message];
 }
 
 @end
