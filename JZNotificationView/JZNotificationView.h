@@ -10,7 +10,7 @@
 
 @interface JZNotificationView : UIView
 
-+ (void)showWithIcon:(UIImage *)image headline:(NSString *)headline message:(NSString *)message;
++ (void)showWithIconName:(UIImage *)image headline:(NSString *)headline message:(NSString *)message;
 + (void)showSuccessWithHeadline:(NSString *)headline message:(NSString *)message;
 + (void)showFailureWithHeadline:(NSString *)headline message:(NSString *)message;
 + (void)showWarningWithHeadline:(NSString *)headline message:(NSString *)message;
