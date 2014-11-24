@@ -14,6 +14,7 @@
 		421E43B21A1DE99C00528FC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 421E43B11A1DE99C00528FC1 /* Images.xcassets */; };
 		421E43B51A1DE99C00528FC1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421E43B31A1DE99C00528FC1 /* LaunchScreen.xib */; };
 		421E43C11A1DE99C00528FC1 /* JZNotificationViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E43C01A1DE99C00528FC1 /* JZNotificationViewTests.m */; };
+		42A7BFA41A2312A400C5B144 /* JZNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A7BFA31A2312A400C5B144 /* JZNotificationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		421E43BA1A1DE99C00528FC1 /* JZNotificationViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JZNotificationViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		421E43BF1A1DE99C00528FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		421E43C01A1DE99C00528FC1 /* JZNotificationViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JZNotificationViewTests.m; sourceTree = "<group>"; };
+		42A7BFA21A2312A400C5B144 /* JZNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZNotificationView.h; sourceTree = "<group>"; };
+		42A7BFA31A2312A400C5B144 /* JZNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZNotificationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 			children = (
 				421E43A81A1DE99C00528FC1 /* AppDelegate.h */,
 				421E43A91A1DE99C00528FC1 /* AppDelegate.m */,
+				42A7BFA21A2312A400C5B144 /* JZNotificationView.h */,
+				42A7BFA31A2312A400C5B144 /* JZNotificationView.m */,
 				421E43AB1A1DE99C00528FC1 /* ViewController.h */,
 				421E43AC1A1DE99C00528FC1 /* ViewController.m */,
 				421E43AE1A1DE99C00528FC1 /* Main.storyboard */,
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				421E43AD1A1DE99C00528FC1 /* ViewController.m in Sources */,
+				42A7BFA41A2312A400C5B144 /* JZNotificationView.m in Sources */,
 				421E43AA1A1DE99C00528FC1 /* AppDelegate.m in Sources */,
 				421E43A71A1DE99C00528FC1 /* main.m in Sources */,
 			);
@@ -414,6 +420,7 @@
 				421E43C61A1DE99C00528FC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		421E43C71A1DE99C00528FC1 /* Build configuration list for PBXNativeTarget "JZNotificationViewTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +429,7 @@
 				421E43C91A1DE99C00528FC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

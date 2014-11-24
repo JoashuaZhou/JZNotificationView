@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "JZNotificationView.h"
 
 @interface ViewController ()
 
@@ -16,12 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    button.center = CGPointMake(self.view.center.x, self.view.center.y - 50);
+    [button addTarget:self action:@selector(demo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+- (void)demo
+{
+    [JZNotificationView showWarningWithHeadline:@"警告" message:@"你已被天朝锦衣卫通缉！"];
 }
 
 @end
