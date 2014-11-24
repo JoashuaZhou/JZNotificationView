@@ -21,6 +21,8 @@
 
 @interface JZNotificationView ()
 
+@property (nonatomic, weak) UIVisualEffectView *blurView;
+@property (nonatomic, weak) UIVisualEffectView *vibrancyView;
 @property (nonatomic, weak) UIImageView *iconView;
 @property (nonatomic, weak) UILabel *headlineLabel;
 @property (nonatomic, weak) UILabel *messageLabel;
@@ -33,19 +35,29 @@
 {
     if (self == [super initWithFrame:frame]) {
         
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        self.blurView = blurView;
+//        UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
+//        UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
+//        self.vibrancyView = vibrancyView;
+        
         UIImageView *iconView = [[UIImageView alloc] init];
-        [self addSubview:iconView];
+        [blurView.contentView addSubview:iconView];
         self.iconView = iconView;
         
         UILabel *headlineLabel = [[UILabel alloc] init];
         headlineLabel.font = [UIFont boldSystemFontOfSize:16.0];
-        [self addSubview:headlineLabel];
+        [blurView.contentView addSubview:headlineLabel];
         self.headlineLabel = headlineLabel;
         
         UILabel *messageLabel = [[UILabel alloc] init];
         messageLabel.font = [UIFont systemFontOfSize:13.0];
-        [self addSubview:messageLabel];
+        [blurView.contentView addSubview:messageLabel];
         self.messageLabel = messageLabel;
+        
+//        [blurView.contentView addSubview:vibrancyView];
+        [self addSubview:blurView];
     }
     return self;
 }
@@ -55,6 +67,10 @@
     [super layoutSubviews];
     
     self.bounds = CGRectMake(0, 0, self.bounds.size.width, 64);
+    
+    self.blurView.frame = self.frame;
+//    self.vibrancyView.frame = self.frame;
+    
 //    CGFloat iconViewY = (self.bounds.size.height - iconViewHeight) / 2;
     self.iconView.frame = CGRectMake(iconViewLeadingPadding, iconViewLeadingPadding, iconViewWidth, iconViewHeight);
     self.iconView.center = CGPointMake(iconViewLeadingPadding + iconViewWidth / 2, self.bounds.size.height / 2);
