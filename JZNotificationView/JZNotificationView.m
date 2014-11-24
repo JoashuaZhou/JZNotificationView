@@ -36,29 +36,30 @@
 {
     if (self == [super initWithFrame:frame]) {
         
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        self.blurView = blurView;
-//        UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
-//        UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
-//        self.vibrancyView = vibrancyView;
+        self.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:247/255.0 alpha:1.0];
+        //        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        //        UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        //        self.blurView = blurView;
+        //        UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
+        //        UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
+        //        self.vibrancyView = vibrancyView;
         
         UIImageView *iconView = [[UIImageView alloc] init];
-        [blurView.contentView addSubview:iconView];
+        [self addSubview:iconView];
         self.iconView = iconView;
         
         UILabel *headlineLabel = [[UILabel alloc] init];
         headlineLabel.font = [UIFont boldSystemFontOfSize:16.0];
-        [blurView.contentView addSubview:headlineLabel];
+        [self addSubview:headlineLabel];
         self.headlineLabel = headlineLabel;
         
         UILabel *messageLabel = [[UILabel alloc] init];
         messageLabel.font = [UIFont systemFontOfSize:13.0];
-        [blurView.contentView addSubview:messageLabel];
+        [self addSubview:messageLabel];
         self.messageLabel = messageLabel;
         
-//        [blurView.contentView addSubview:vibrancyView];
-        [self addSubview:blurView];
+        //        [blurView.contentView addSubview:vibrancyView];
+        //        [self addSubview:blurView];
     }
     return self;
 }
